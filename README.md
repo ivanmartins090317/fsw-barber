@@ -1,3 +1,27 @@
+Instalação do Prisma:
+npm install prisma --save-dev
+
+Inicialização do Prisma com PostgreSQL:
+npx prisma init --datasource-provider postgresql
+
+Migração do banco de dados:
+npx prisma migrate dev --name init_db
+
+Instalação do ts-node:
+npm i -D ts-node
+
+Seed do banco de dados:
+npx prisma db seed
+
+Instalação do Prettier e do plugin TailwindCSS para Prettier:
+npm install -D prettier prettier-plugin-tailwindcss
+
+Inicialização do ShadCN UI:
+npx shadcn-ui@latest init
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
