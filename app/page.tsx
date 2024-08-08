@@ -2,10 +2,13 @@
 import Image from "next/image";
 
 
-import { SearchIcon } from "lucide-react"
+import {SearchIcon } from "lucide-react"
 import { Header } from "./_components/Header"
 import { Button } from "./_components/ui/button"
 import { Input } from "./_components/ui/input"
+import { Card, CardContent } from "./_components/ui/card";
+import { Badge } from "./_components/ui/badge"
+import { Avatar, AvatarImage } from "./_components/ui/avatar"
 
 
 
@@ -19,13 +22,14 @@ const Home = () =>{
             <h2 className="text-xl font-bold">Olá Ivan,</h2>
             <p>Terça-feira, 6 de Agosto.</p>
         </div>
-
+       {/* Input search */}
         <div className="mt-6 flex justify-between gap-2">
           <Input placeholder="Buscar..."/>
           <Button>
             <SearchIcon />
           </Button>
         </div>
+        {/* Banner */}
        <div className="mt-6 relative h-[150px] w-full">
         <Image 
          src="/Banner FSW-barber.png" 
@@ -34,6 +38,33 @@ const Home = () =>{
          className="rounded-xl object-cover"
          />
        </div>
+       {/* Agendamento */}
+       <Card className="mt-6">
+         <CardContent className="flex items-center justify-between">
+          {/* Badge */}
+          <div className="flex flex-col py-5 gap-2" >
+            <div className="flex flex-col">
+              <Badge className="w-fit mb-2">Confirmado</Badge>
+              <h2 className="text-font-semibold">Corte de Cabelo</h2>
+            </div>
+
+            {/* Avatar */}
+            <div className="flex gap-2 items-center">
+              <Avatar className="w-6 h-6">
+                <AvatarImage src="https://utfs.io/f/45331760-899c-4b4b-910e-e00babb6ed81-16q.png"
+                alt="avatar barbearia"/>
+              </Avatar>
+              <p className="text-sm">FSW Barber</p>
+            </div>
+            {/* Horario */}
+          </div>
+            <div className="flex flex-col justify-center items-center border-l-2 border-solid pl-5 " >
+              <p className="text-sm">Agosto</p>
+              <p className="text-2xl">07</p>
+              <small className="text-sm">10:00</small>
+            </div>
+         </CardContent>
+       </Card>
        </div>
 
 
