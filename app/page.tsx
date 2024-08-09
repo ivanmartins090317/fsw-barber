@@ -4,15 +4,13 @@ import Image from "next/image";
 
 import {SearchIcon } from "lucide-react"
 import { Header } from "./_components/Header"
-import { Button } from "./_components/ui/button"
+import { Button} from "./_components/ui/button"
 import { Input } from "./_components/ui/input"
 import { Card, CardContent } from "./_components/ui/card";
-import { Badge } from "./_components/ui/badge"
-import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma";
 import { BarbershopItem } from "./_components/barbershop-item";
-
-
+import { quicksearchOptions } from "./_contants/quickSearch";
+import { BookingItem } from "./_components/booking-item";
 
 
 const  Home = async () =>{
@@ -39,6 +37,17 @@ const  Home = async () =>{
             <SearchIcon />
           </Button>
         </div>
+        {/* Busca Rapida */}
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+        {
+          quicksearchOptions.map(options =>(
+            <Button key={options.title} className="gap-2" variant="secondary">
+              <Image src={options.imageUrl} alt={options.title} width={16} height={16}/>
+              {options.title}
+            </Button>
+          ))
+        }
+        </div>
         {/* Banner */}
        <div className="mt-6 relative h-[150px] w-full">
         <Image 
@@ -49,33 +58,7 @@ const  Home = async () =>{
          />
        </div>
        {/* Agendamento */}
-       <h2 className="mt-6 mb-3 text-xs uppercase text-gray-400">Agendamento</h2>
-       <Card className="">
-         <CardContent className="flex items-center justify-between">
-          {/* Badge */}
-          <div className="flex flex-col py-5 gap-2" >
-            <div className="flex flex-col">
-              <Badge className="w-fit mb-2">Confirmado</Badge>
-              <h2 className="text-font-semibold">Corte de Cabelo</h2>
-            </div>
-
-            {/* Avatar */}
-            <div className="flex gap-2 items-center">
-              <Avatar className="w-6 h-6">
-                <AvatarImage src="https://utfs.io/f/45331760-899c-4b4b-910e-e00babb6ed81-16q.png"
-                alt="avatar barbearia"/>
-              </Avatar>
-              <p className="text-sm">FSW Barber</p>
-            </div>
-            {/* Horario */}
-          </div>
-            <div className="flex flex-col justify-center items-center border-l-2 border-solid pl-5 " >
-              <p className="text-sm">Agosto</p>
-              <p className="text-2xl">07</p>
-              <small className="text-sm">10:00</small>
-            </div>
-         </CardContent>
-       </Card>
+       <BookingItem/>
         {/* Barbershop Recomendad item */}
         <h2 className="mt-6 mb-3 text-xs uppercase text-gray-400">Recomendados</h2>
          <div className="flex gap-3 overflow-auto [&::-webkit-scrollbar]:hidden">
@@ -98,10 +81,16 @@ const  Home = async () =>{
               ))
             }
        
-      </div>
+          </div>
        </div>
+       <footer>
+          <Card className="rounded-none">
+            <CardContent className="p-3 px-6">
+              <p className="text-xs text-gray-400">© 2023 Copyright <span className="font-bold">FSW Barber</span></p>
+            </CardContent>
+          </Card>
+       </footer>
       
-
      
 
     </div>
